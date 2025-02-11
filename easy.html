@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Святого Валентина! ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: #a45c75;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .hidden { display: none; }
+        h1 { font-size: 40px; }
+        p { font-size: 18px; }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+        button:hover { background: #e6005c; }
+        img { width: 200px; }
+        .game-button {
+            position: absolute;
+            border-radius: 50px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('https://i.imgur.com/RQdIh1r.png') no-repeat center/cover;
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes moveButton {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(200px, 50px); }
+            50% { transform: translate(-150px, 100px); }
+            75% { transform: translate(100px, -50px); }
+            100% { transform: translate(0, 0); }
+        }
+        .moving-button {
+            animation: moveButton 3s infinite alternate ease-in-out;
+        }
+        .footer-text {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 16px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-screen">
+        <h1>Введи дату своего рождения 💖</h1>
+        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Милый медвежонок">
+        <br>
+        <input type="password" id="password" placeholder="**" style="font-size: 24px; padding: 10px; width: 200px;">
+        <button onclick="checkPassword()">Войти</button>
+    </div>
+    <div id="main-content" class="hidden">
+        <h1>С Днем Святого Валентина, моя прекрасная! 💘</h1>
+        <p>Ты лучшее, что есть в этом мире!</p>
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Милый котик">
+        <p>Попади по кнопке, чтобы получить мое признание!</p>
+        <button id="target-button" class="game-button moving-button" onclick="hitButton()">Попади в меня!</button>
+        <div id="final-message" class="hidden">
+            <h1>Ты попала! 💖</h1>
+            <p class="final-message">Ты самая добрая, красивая, умная и великолепная девушка в этом мире. 💕 Я счастлив, что ты есть в моей жизни!</p>
+            <p>Я думаю, мы идем на свидание! Встретимся у твоего дома в 7 вечера 💘</p>
+            <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Милый котик">
+        </div>
+    </div>
+    <div class="footer-text">Люблю тебя, малявка<3.</div>
+    <script>
+        let attempts = 0;
+        function checkPassword() {
+            if (document.getElementById('password').value === '2106') {
+                document.getElementById('password-screen').style.display = 'none';
+                document.getElementById('main-content').classList.remove('hidden');
+            } else {
+                alert('Неправильный пароль!');
+            }
+        }
+        function hitButton() {
+            attempts++;
+            if (attempts >= 5) {
+                document.getElementById('target-button').style.display = 'none';
+                document.getElementById('final-message').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
